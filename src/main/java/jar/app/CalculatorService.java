@@ -1,6 +1,7 @@
 package jar.app;
 
 import io.micronaut.cache.annotation.Cacheable;
+import io.reactivex.Single;
 
 import javax.inject.Singleton;
 
@@ -8,8 +9,8 @@ import javax.inject.Singleton;
 public class CalculatorService {
 
     @Cacheable("my-cache")
-    public int addOne(int num) {
+    public Single<Integer> addOne(int num) {
         System.out.println("called");
-        return num + 1;
+        return Single.just(num + 1);
     }
 }
